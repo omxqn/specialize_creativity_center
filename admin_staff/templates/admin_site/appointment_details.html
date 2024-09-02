@@ -1,0 +1,145 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Appointment Details
+{% endblock %}
+{% block content %}
+
+
+
+
+    <!-- content section start   -->
+    <div class="main-content">
+        <!-- main content start -->
+        <div>
+            <div class="page-title">
+                <h3>Appointment Detail</h3>
+
+            </div>
+
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-4 col-md-6 mx-auto">
+                    <div class="p-30 br-sm bgnc-10 bxs-1 text-center">
+                        <div class="thum-pic mb-sm-30 mb-20">
+                            {% if appointment_info.doctor.owner.picture %}
+                                <img class="w-100 rounded-circle" src="{{ appointment_info.doctor.owner.picture.url }}"
+                                     alt="patient">
+                            {% else %}
+                                <img class="w-100 rounded-circle" src="{% static 'assets/img/mr-patient.png' %}"
+                                     alt="patient">
+                            {% endif %}
+
+                        </div>
+                        <span class="heading-four mb-10">{{ appointment_info.doctor.first_name }}&nbsp;{{ appointment_info.doctor.last_name }}</span>
+                        <span class="para-1b d-block mb-20">{{ appointment_info.doctor.specialization }}</span>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="px-lg-30 px-3 py-20 br-sm bgnc-10 bxs-1">
+                        <span class="heading-four text-center tpc-2 mb-20">Patient Appointment Info</span>
+                        <div class="bt-2 pt-20 doc-info-body">
+
+                            <div class="doc-info-item">
+                                <ul class="d-grid gap-10">
+                                    <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Name</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                        <span class="fs-base">{{ appointment_info.patient.name}}</span>
+                                    </li>
+                                    <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Address</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                        <span class="fs-base">{{ appointment_info.patient.address }} </span>
+                                    </li>
+                                    <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Email</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                        <span class="fs-base"> {{ appointment_info.patient.email}} </span>
+                                    </li>
+                                    <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Phone</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                        <span class="fs-base"> {{appointment_info.patient.phone}}</span>
+                                    </li>
+                                    <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Gender</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                        <span class="fs-base"> {{ appointment_info.patient.gender }} </span>
+                                    </li>
+                                    <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Status</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                        <span class="fs-base tsc-1">Active</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="doc-info-item">
+                                <ul class="d-grid gap-10">
+                                    <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Doctor Name</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                        <span class="fs-base">{{ appointment_info.doctor.first_name }}&nbsp;{{ appointment_info.doctor.last_name }}</span>
+                                    </li>
+
+
+
+                                    <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold">Appointment Time</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                        <span class="fs-base">{{ appointment_info.appointment_at|time}}</span>
+                                    </li>
+                                    <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold">Appointment Date</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                        <span class="fs-base">{{ appointment_info.appointment_at|date}}</span>
+                                    </li>
+                                       <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Remarks</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                        <span class="fs-base">{{ appointment_info.remarks }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer>
+            <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span
+                            class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+            </div>
+        </footer>
+
+
+    </div>
+
+    </main>
+
+{% endblock %}

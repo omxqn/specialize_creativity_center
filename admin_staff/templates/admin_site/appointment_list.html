@@ -1,0 +1,129 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Appointments
+{% endblock %}
+{% block content %}
+
+
+
+
+        <!-- content section start   -->
+        <div class="main-content">
+            <!-- main content start -->
+            <div>
+                <div class="page-title">
+                      <a href="{% url 'admin_add_appointment' %}" class="btn-2"> <i class="fa-solid fa-plus"></i> Schedule an appointment </a>
+
+                    <ul class="d-flex align-items-center gap-20">
+                        <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                        <li class="bc-item">Appointment List</li>
+                    </ul>
+                </div>
+            {% include '_messages.html' %}
+
+                <div class="list-body" id="table_list5">
+                  <div class="list-title d-between bgnc-10 br-trl-sm px-30 py-3">
+                    <div class="search-box ms-2">
+                        <input type="text" class="form-control search" placeholder="Search..">
+                        <i class="ri-search-line search-icon"></i>
+                    </div>
+
+                </div>
+
+
+
+                     <table class="list-table">
+                        <thead>
+                            <tr>
+
+                                <th class="doctor_name">Doctor Name </th>
+                                <th class="patient_name">Patient Name </th>
+                                <th class="appointment_date">Appointment Date </th>
+                                <th >Appointment Time</th>
+                                <th >Amount Paid</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                        {% for item in all_appointments %}
+                            <tr>
+
+                                <td class="doctor_name"><a href="{% url 'admin_doctor_detail_view' item.doctor.id %}">{{ item.doctor.first_name }}&nbsp;{{ item.doctor.last_name }}</a></td>
+                                <td class="patient_name"><a href="{% url 'admin_patient_detail' item.patient.id %}">{{ item.patient.name}}</a></td>
+
+                                <td class="appointment_date">{{ item.appointment_at|date}}</td>
+                                <td>{{ item.appointment_at|time}}</td>
+                                 <td>{{ item.fee_paid }}</td>
+                                <td class="text-center">
+
+
+                             <span class="d-center gap-3">
+                                        <a href="{% url 'admin_appointment_detail' item.id %}"><i class="act-icon tpc-2 fa-regular fa-eye icon-bg icon-bgc-2"></i> </a>
+                                        <a href="{% url 'admin_edit_appointment' item.id %}"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg icon-bgc-2"></i></a>
+
+                                    </span>
+                            </tr>
+
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                    <!-- table end -->
+                    <!-- pagination start  -->
+                    <div class="list-footer d-between bgnc-10 br-brl-sm px-30 py-3">
+                        <span class="para-1b fs-base d-block">Showing 1 to 10 of 14 entries</span>
+                        <ul class="pagination-item">
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)" aria-label="Previous">
+                                    <span aria-hidden="true"><i class="fa-solid fa-angles-left"></i></span>
+                                </a>
+                            </li>
+                            <li class="page-item "><a class="page-link" href="javascript:void(0)">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="javascript:void(0)">2</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)" aria-label="Next">
+                                    <span aria-hidden="true"><i class="fa-solid fa-angles-right"></i></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- pagination end  -->
+                </div>
+
+            </div>
+            <footer>
+                <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </main>
+
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize List.js with both search and pagination options
+            var options = {
+                valueNames: ['doctor_name', 'patient_name','appointment_date'],
+
+            };
+            var cryptoList = new List('table_list5', options);
+
+            // Optionally, add a search box event listener
+            document.querySelector('.search').addEventListener('input', function (event) {
+                cryptoList.search(event.target.value);
+            });
+        });
+    </script>
+
+{% endblock %}

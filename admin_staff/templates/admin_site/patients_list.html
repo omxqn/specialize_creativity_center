@@ -1,0 +1,125 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Doctor Patients
+{% endblock %}
+{% block content %}
+
+
+
+
+        <!-- content section start   -->
+        <div class="main-content">
+            <!-- main content start -->
+            <div>
+                <div class="page-title">
+                    <a href="{% url 'admin_add_patient' %}" class="btn-2"> <i class="fa-solid fa-plus"></i> Add patient </a>
+                    <ul class="d-flex align-items-center gap-20">
+                        <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                        <li class="bc-item">Patient List</li>
+                    </ul>
+                </div>
+            {% include '_messages.html' %}
+
+                <div class="list-body" id="table_list4">
+                 <div class="list-title d-between bgnc-10 br-trl-sm px-30 py-3">
+                    <div class="search-box ms-2">
+                        <input type="text" class="form-control search" placeholder="Search..">
+                        <i class="ri-search-line search-icon"></i>
+                    </div>
+
+                </div>
+
+
+                    <!-- table start -->
+                    <table class="list-table" >
+                        <thead>
+                            <tr>
+                                <th class="id">ID</th>
+                                <th class="name">
+                                    Name
+                                </th>
+                                <th class="email">Email
+                                </th>
+                                <th class="phone">Phone
+                                </th>
+
+                                <th><img class="me-10" src="{% static 'assets/img/up-down.png' %}" alt="up-down">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                            {% for item in all_patients %}
+                            <tr class="p-10">
+                                <td class="id">{{ item.id }}</td>
+                                <td class="name"><a href="#">{{ item.name}}</a></td>
+                                <td class="email">{{ item.email}}</td>
+                                <td class="phone">{{item.phone}}</td>
+
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <a href="{% url 'admin_patient_detail' item.id %}"><i class="act-icon tpc-2 fa-regular fa-eye icon-bg icon-bgc-2"></i> </a>
+                                        <a href="{% url 'admin_edit_patient' item.id %}"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg icon-bgc-2"></i></a>
+
+                                    </span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                    <!-- table end -->
+                    <!-- pagination start  -->
+                    <div class="list-footer d-between bgnc-10 br-brl-sm px-30 py-3">
+                        <span class="para-1b fs-base d-block">Showing 1 to 10 of 14 entries</span>
+                        <ul class="pagination-item">
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)" aria-label="Previous">
+                                    <span aria-hidden="true"><i class="fa-solid fa-angles-left"></i></span>
+                                </a>
+                            </li>
+                            <li class="page-item "><a class="page-link" href="javascript:void(0)">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="javascript:void(0)">2</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)" aria-label="Next">
+                                    <span aria-hidden="true"><i class="fa-solid fa-angles-right"></i></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- pagination end  -->
+                </div>
+
+            </div>
+            <footer>
+                <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </main>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize List.js with both search and pagination options
+            var options = {
+                valueNames: ['name', 'email','phone'],
+
+            };
+            var cryptoList = new List('table_list4', options);
+
+            // Optionally, add a search box event listener
+            document.querySelector('.search').addEventListener('input', function (event) {
+                cryptoList.search(event.target.value);
+            });
+        });
+    </script>
+
+{% endblock %}

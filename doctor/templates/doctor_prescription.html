@@ -1,0 +1,227 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Doctor Patients
+{% endblock %}
+{% block content %}
+
+
+
+
+    <!-- content section start   -->
+    <div class="main-content">
+        <!-- main content start -->
+        <div>
+            <div class="page-title justify-content-end">
+                <!-- <h3>Add Prescription</h3> -->
+                <ul class="d-flex align-items-center flex-wrap column-gap-20">
+                    <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                    <li class="bc-item"><a class="para-1b" href="#">Prescription</a>
+                    </li>
+                    <li class="bc-item">Add Prescription</li>
+                </ul>
+            </div>
+
+            <div class="bgnc-10 br-sm p-sm-30 p-10">
+                <span class="heading-five mb-sm-30 mb-3 tpc-2">Add Prescription</span>
+
+
+                <div class="row gy-20 gx-4">
+                    <div class="col-lg-6">
+                        <label class="mb-10 fw-semibold">Select Patient <span class="tsc-1">*</span></label>
+                        <div class="pres-input">
+                            <input type="text" value="{{ appointment_info.patient.name }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label class="mb-10 fw-semibold">Prescription Date <span class="tsc-1">*</span></label>
+                        <div class="pres-input">
+                            <input type="text" placeholder="2022-09-08" required>
+                        </div>
+
+                    </div>
+                    <div class="my-sm-30 my-3">
+                        <a class="btn-2 d-inline-flex" href="javascript:void(0)"> <i
+                                class="fa-regular fa-newspaper"></i> View Past History</a>
+                    </div>
+                </div>
+                <hr>
+
+
+                <button class="btn-2" id="showFilter"><i class="fa-solid fa-plus"></i>
+                    Add Medicine
+                </button>
+                <!-- pop up filter box start -->
+                <div class="filter-list bgnc-10 ">
+                    <div class="px-30 pt-3 pb-30">
+                        <form action="{% url 'doctor_add_medicine' %}" method="post" class="d-between gap-30 mb-30">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{ prescription_info.id }}" name="prescription_id">
+                            <input type="hidden" value="{{ appointment_info.id }}" name="appointment_id">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="w-30">
+                                        <label class="para-1b d-block tnc-1 mb-10">Medicine Name</label>
+                                         <select name="medicine_name" class="wide form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" required>
+                                            <option value="Select"></option>
+                                            {% for item in products %}
+                                                <option value="{{ item.id }}">{{ item.name }}</option>
+                                            {% endfor %}
+
+                                        </select>
+
+                                    </div>
+
+
+
+
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="w-30">
+                                        <label class="para-1b d-block tnc-1 mb-10">Formula</label>
+                                        <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="text"
+                                               name="medicine_instruction"
+                                               placeholder="Formula" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="w-30">
+                                        <label class="para-1b d-block tnc-1 mb-10">Dose Per Day</label>
+                                        <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="text"
+                                               name="dose_quantity"
+                                               placeholder="Does per day" required>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <br>
+                            <button type="submit" class="btn-2">Add Now</button>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="diagnosis-form">
+                    {% for item in medicine_list %}
+
+
+                        <div class="medi-input-box">
+
+                            <div class="medicine-input">
+                                <input type="text" value="{{ item.medicine_name }}">
+                            </div>
+                        </div>
+                        <div class="medi-input-box">
+
+                            <div class="medicine-input">
+                                <input type="text" value="{{ item.instruction }}">
+                            </div>
+                        </div>
+                        <div class="medi-input-box">
+
+                            <div class="medicine-input d-center gap-10">
+
+                                <a href="{% url 'doctor_delete_medicie' item.id appointment_info.id %}"><i
+                                        class="fa-solid fa-trash-can icon-bg"></i></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <hr>
+                <button class="btn-2" id="showFilter2"><i class="fa-solid fa-plus"></i>
+                    Add Examination
+                </button>
+                <!-- pop up filter box start -->
+                <div class="filter-list2 bgnc-10 ">
+                    <div class="px-30 pt-3 pb-30">
+                        <form action="{% url 'doctor_add_lab_test' %}" method="post" class="d-between gap-30 mb-30">
+                            {% csrf_token %}
+                            <div class="row">
+                                <input type="hidden" value="{{ prescription_info.id }}" name="prescription_id">
+                                <input type="hidden" value="{{ appointment_info.id }}" name="appointment_id">
+                            <div class="col-sm-6">
+
+                                    <label class="para-1b d-block tnc-1 mb-10">Test Type</label>
+                                <select name="test_type" class="form-control" required>
+
+                                    {% for item in test_list %}
+                                        <option value="{{ item.id }}">{{ item.type_name }}</option>
+                                    {% endfor %}
+                                </select>
+
+                            </div>
+
+
+                                <div class="col-sm-6">
+
+                                        <label class="para-1b d-block tnc-1 mb-10">Instructions</label>
+                                        <input class="form-control " type="text"
+                                               name="instruction"
+                                               placeholder="Instructions" required>
+
+                                </div>
+
+
+                            </div>
+                            <br>
+                            <button type="submit" class="btn-2">Save</button>
+                        </form>
+
+                    </div>
+                </div>
+
+
+                <div class="diagnosis-form">
+                    {% for item in Lab_examination_list %}
+
+
+
+                        <div class="medi-input-box">
+
+                            <div class="medicine-input">
+
+                                <input value="{{ item.test_name }}" readonly>
+                            </div>
+                        </div>
+                        <div class="medi-input-box">
+
+                            <div class="medicine-input">
+                                <input type="text" readonly value="{{ item.instruction }}">
+                            </div>
+                        </div>
+                        <div class="medi-input-box">
+
+                            <div class="medicine-input d-center gap-10">
+
+                                <a href="{% url 'doctor_delete_test' item.id appointment_info.id %}"><i
+                                        class="fa-solid fa-trash-can icon-bg"></i></a>
+                                {% if item.report %}
+                                    <a href="{{ item.report.url }}" target="_blank"> <i
+                                            class="act-icon tpc-2 fa-regular fa-eye icon-bg"></i></a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </div>
+        <footer>
+            <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span
+                            class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+            </div>
+        </footer>
+
+
+    </div>
+
+    </main>
+
+{% endblock %}

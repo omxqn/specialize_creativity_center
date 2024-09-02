@@ -1,0 +1,265 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Doctor Patients
+{% endblock %}
+{% block content %}
+
+
+
+
+        <!-- content section start   -->
+        <div class="main-content">
+            <!-- main content start -->
+            <div>
+                <div class="page-title">
+                    <a href="#" class="btn-2"> <i class="fa-solid fa-plus"></i> Add patient </a>
+                    <ul class="d-flex align-items-center gap-20">
+                        <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                        <li class="bc-item">Patient List</li>
+                    </ul>
+                </div>
+
+                <div class="list-body">
+                    <div class="list-title d-between bgnc-10 br-trl-sm px-30 py-3">
+                        <span class="heading-five">Patient List</span>
+                        <div class="d-between gap-30">
+                            <button class="btn-1 para-1b"> <i class="fa-solid fa-cloud-arrow-down"></i> Export</button>
+                            <button class="btn-1 para-1b" id="showFilter"> <i class="fa-solid fa-sliders"></i>
+                                Filter</button>
+                        </div>
+                    </div>
+                    <!-- pop up filter box start -->
+                    <div class="filter-list bgnc-10 ">
+                        <div class="px-30 pt-3 pb-30">
+                            <form action="#" class="d-between gap-30 mb-30">
+                                <div class="w-100">
+                                    <label class="para-1b d-block tnc-1 mb-10">Name</label>
+                                    <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="text"
+                                        placeholder="Your name">
+                                </div>
+                                <div class="w-100">
+                                    <label class="para-1b d-block tnc-1 mb-10">Email</label>
+                                    <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="email"
+                                        placeholder="Your email">
+                                </div>
+                                <div class="w-100">
+                                    <label class="para-1b d-block tnc-1 mb-10">Phone</label>
+                                    <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="number"
+                                        placeholder="Your number">
+                                </div>
+                            </form>
+                            <button class="btn-2">Submit</button>
+                        </div>
+                    </div>
+                    <!-- pop up filter box end -->
+                    <!-- table start -->
+                    <table class="list-table" id="itemTable">
+                        <thead>
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="sort-devices"><img class="me-10" src="{% static 'assets/img/up-down.png' %}" alt="up-down">
+                                    Name
+                                </th>
+                                <th class="sort-devices"><img class="me-10" src="{% static 'assets/img/up-down.png' %}"
+                                        alt="up-down">Email
+                                </th>
+                                <th class="sort-devices"><img class="me-10" src="{% static 'assets/img/up-down.png' %}"
+                                        alt="up-down">Phone
+                                </th>
+                                <th><img class="me-10" src="{% static 'assets/img/up-down.png' %}" alt="up-down">Status</th>
+                                <th><img class="me-10" src="{% static 'assets/img/up-down.png' %}" alt="up-down">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td><a href="#">Mr Patient</a></td>
+                                <td>patient@ambitiousit.com</td>
+                                <td>(406) 555-0120</td>
+                                <td class="tsc-1">Active</td>
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <i class="act-icon tpc-2 fa-regular fa-eye icon-bg"></i>
+                                        <a href="#"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg"></i></a>
+                                        <i class="delete-icon tpc-2 fa-solid fa-trash-can icon-bg"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">2</td>
+                                <td><a href="admin-patient-info.html">Mr Patient x </a></td>
+                                <td>patient@ambitiousit.com</td>
+                                <td>(406) 555-0121</td>
+                                <td class="tsc-1">Active</td>
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <i class="act-icon tpc-2 fa-regular fa-eye icon-bg icon-bgc-2"></i>
+                                        <a href="admin-edit-patient.html"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg icon-bgc-2"></i></a>
+                                        <i class="delete-icon tpc-2 fa-solid fa-trash-can icon-bg icon-bgc-2"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">3</td>
+                                <td><a href="admin-patient-info.html">Mr Patient y</a></td>
+                                <td>patient@ambitiousit.com</td>
+                                <td>(406) 555-0122</td>
+                                <td class="tsc-1">Active</td>
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <i class="act-icon tpc-2 fa-regular fa-eye icon-bg"></i>
+                                        <a href="admin-edit-patient.html"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg"></i></a>
+                                        <i class="delete-icon tpc-2 fa-solid fa-trash-can icon-bg"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">4</td>
+                                <td><a href="admin-patient-info.html">Mr Patient z </a></td>
+                                <td>patient@ambitiousit.com</td>
+                                <td>(406) 555-0123</td>
+                                <td class="tsc-1">Active</td>
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <i class="act-icon tpc-2 fa-regular fa-eye icon-bg icon-bgc-2"></i>
+                                        <a href="admin-edit-patient.html"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg icon-bgc-2"></i></a>
+                                        <i class="delete-icon tpc-2 fa-solid fa-trash-can icon-bg icon-bgc-2"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">5</td>
+                                <td><a href="admin-patient-info.html">Mr Patient</a></td>
+                                <td>patient@ambitiousit.com</td>
+                                <td>(406) 555-0124</td>
+                                <td class="tsc-1">Active</td>
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <i class="act-icon tpc-2 fa-regular fa-eye icon-bg"></i>
+                                        <a href="admin-edit-patient.html"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg"></i></a>
+                                        <i class="delete-icon tpc-2 fa-solid fa-trash-can icon-bg"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="p-10">
+                                <td class="text-center">6</td>
+                                <td><a href="admin-patient-info.html">Mr Patient</a></td>
+                                <td>patient@ambitiousit.com</td>
+                                <td>(406) 555-0125</td>
+                                <td class="tsc-1">Active</td>
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <i class="act-icon tpc-2 fa-regular fa-eye icon-bg icon-bgc-2"></i>
+                                        <a href="admin-edit-patient.html"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg icon-bgc-2"></i></a>
+                                        <i class="delete-icon tpc-2 fa-solid fa-trash-can icon-bg icon-bgc-2"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">7</td>
+                                <td><a href="admin-patient-info.html">Mr Patient</a></td>
+                                <td>patient@ambitiousit.com</td>
+                                <td>(406) 555-0126</td>
+                                <td class="tsc-1">Active</td>
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <i class="act-icon tpc-2 fa-regular fa-eye icon-bg"></i>
+                                        <a href="admin-edit-patient.html"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg"></i></a>
+                                        <i class="delete-icon tpc-2 fa-solid fa-trash-can icon-bg"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">8</td>
+                                <td><a href="admin-patient-info.html">Mr Patient</a></td>
+                                <td>patient@ambitiousit.com</td>
+                                <td>(406) 555-0127</td>
+                                <td class="tsc-1">Active</td>
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <i class="act-icon tpc-2 fa-regular fa-eye icon-bg icon-bgc-2"></i>
+                                        <a href="admin-edit-patient.html"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg icon-bgc-2"></i></a>
+                                        <i class="delete-icon tpc-2 fa-solid fa-trash-can icon-bg icon-bgc-2"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">9</td>
+                                <td><a href="admin-patient-info.html">Mr Patient</a></td>
+                                <td>patient@ambitiousit.com</td>
+                                <td>(406) 555-0128</td>
+                                <td class="tsc-1">Active</td>
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <i class="act-icon tpc-2 fa-regular fa-eye icon-bg"></i>
+                                        <a href="admin-edit-patient.html"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg"></i></a>
+                                        <i class="delete-icon tpc-2 fa-solid fa-trash-can icon-bg"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">10</td>
+                                <td><a href="admin-patient-info.html">Mr Patient</a></td>
+                                <td>patient@ambitiousit.com</td>
+                                <td>(406) 555-0129</td>
+                                <td class="tsc-1">Active</td>
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <i class="act-icon tpc-2 fa-regular fa-eye icon-bg icon-bgc-2"></i>
+                                        <a href="admin-edit-patient.html"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg icon-bgc-2"></i></a>
+                                        <i class="delete-icon tpc-2 fa-solid fa-trash-can icon-bg icon-bgc-2"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- table end -->
+                    <!-- pagination start  -->
+                    <div class="list-footer d-between bgnc-10 br-brl-sm px-30 py-3">
+                        <span class="para-1b fs-base d-block">Showing 1 to 10 of 14 entries</span>
+                        <ul class="pagination-item">
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)" aria-label="Previous">
+                                    <span aria-hidden="true"><i class="fa-solid fa-angles-left"></i></span>
+                                </a>
+                            </li>
+                            <li class="page-item "><a class="page-link" href="javascript:void(0)">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="javascript:void(0)">2</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)" aria-label="Next">
+                                    <span aria-hidden="true"><i class="fa-solid fa-angles-right"></i></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- pagination end  -->
+                </div>
+
+            </div>
+            <footer>
+                <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </main>
+
+{% endblock %}

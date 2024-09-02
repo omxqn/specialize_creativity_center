@@ -1,0 +1,116 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Create User
+{% endblock %}
+{% block content %}
+
+
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet"/>
+
+        <!-- content section start   -->
+        <div class="main-content">
+            <!-- main content start -->
+            <div>
+                     <div class="bgnc-10 br-sm p-sm-30 p-10">
+                    <span class="heading-five mb-sm-30 mb-3">Create User</span>
+                         {% include '_messages.html' %}
+                    <form action="{% url 'Sign_up' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row gy-20">
+                            <div class="col-lg-6">
+
+                                <div class="mb-20">
+                                    <label class="mb-10 fw-semibold">First Name <span class="tsc-1">*</span></label>
+                                    <div class="form-input-box">
+                                        <i class="fa-solid fa-user-nurse form-icon"></i>
+                                        <input type="text" placeholder="Name" name="fname" required>
+                                    </div>
+                                </div>
+                                <div class="mb-20">
+                                    <label class="mb-10 fw-semibold">Last Name <span class="tsc-1">*</span></label>
+                                    <div class="form-input-box">
+                                        <i class="fa-solid fa-user-nurse form-icon"></i>
+                                        <input type="text" placeholder="Last Name" name="lname" required>
+                                    </div>
+                                </div>
+
+                             <div class="mb-20">
+                                    <label class="mb-10 fw-semibold">Select Role</label>
+                                    <div class="form-input-box">
+                                        <i class="fa-solid fa-user-plus form-icon"></i>
+                                        <select name="role" class="wide Select" required>
+
+                                            <option value="Select">Select</option>
+                                            <option value="Doctor">Doctor</option>
+
+{#                                            <option value="Patients">Patients</option>#}
+                                            <option value="Pharamacy">Pharamacy Staff</option>
+                                            <option value="admin_staff_member">Admin Staff</option>
+                                            <option value="nurse">Nurse Staff</option>
+                                            <option value="Lab">Lab</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-20">
+                                    <label class="mb-10 fw-semibold">Email <span class="tsc-1">*</span></label>
+                                    <div class="form-input-box">
+                                        <i class="fa-regular fa-envelope form-icon"></i>
+                                        <input type="email" placeholder="Email" name="Email" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-20">
+                                    <label class="mb-10 fw-semibold">Phone</label>
+                                    <div class="form-input-box">
+                                        <i class="fa-solid fa-phone-volume form-icon"></i>
+                                        <input type="number" maxlength="11" min="0" name="phone_number" placeholder="Number">
+                                    </div>
+                                </div>
+                                 <div class="mb-20">
+                                    <label class="mb-10 fw-semibold">Gender</label>
+                                    <div class="form-input-box">
+                                        <i class="fa-solid fa-restroom form-icon"></i>
+                                        <select name="gender" class="wide Select">
+                                            <option value="Select">Select</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    <div class="d-flex align-items-center gap-sm-4 gap-3 mt-sm-40 mt-4">
+                        <button class="btn-2 para-1b fw-bold" type="submit">Create Account</button>
+                        <a href="{% url 'admin_dashboard' %}" class="btn-1 para-1b fw-bold">Cancel</a>
+                    </div>
+                        </form>
+                </div>
+
+
+
+
+            </div>
+            <footer>
+                <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </main>
+
+{% endblock %}

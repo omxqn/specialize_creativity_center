@@ -1,0 +1,135 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Doctors
+{% endblock %}
+{% block content %}
+
+
+
+
+        <!-- content section start   -->
+        <div class="main-content">
+            <!-- main content start -->
+            <div>
+                <div class="page-title">
+
+                    <ul class="d-flex align-items-center gap-20">
+                        <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                        <li class="bc-item">Doctor List</li>
+                    </ul>
+                </div>
+            {% include '_messages.html' %}
+
+                <div class="list-body">
+                  <div class="list-title text-center bgnc-10 br-trl-sm px-30 py-3">
+                        <span class="heading-five tpc-2">Doctors</span>
+                    </div>
+
+                    <!-- pop up filter box start -->
+                    <div class="filter-list bgnc-10 ">
+                        <div class="px-30 pt-3 pb-30">
+                            <form action="#" class="d-between gap-30 mb-30">
+                                <div class="w-100">
+                                    <label class="para-1b d-block tnc-1 mb-10">Name</label>
+                                    <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="text"
+                                        placeholder="Your name">
+                                </div>
+                                <div class="w-100">
+                                    <label class="para-1b d-block tnc-1 mb-10">Email</label>
+                                    <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="email"
+                                        placeholder="Your email">
+                                </div>
+                                <div class="w-100">
+                                    <label class="para-1b d-block tnc-1 mb-10">Phone</label>
+                                    <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="number"
+                                        placeholder="Your number">
+                                </div>
+                            </form>
+                            <button class="btn-2">Submit</button>
+                        </div>
+                    </div>
+                    <!-- pop up filter box end -->
+                    <!-- table start -->
+                    <table class="list-table" id="itemTable">
+                        <thead>
+                            <tr>
+
+                                <th class="sort-devices">
+                                    Name
+                                </th>
+
+
+                                <th class="sort-devices">Phone
+                                </th>
+                                <th class="sort-devices">Visiting Hours
+                                </th>
+                                  <th class="sort-devices">Specialization
+                                </th>
+
+
+                                <th><img class="me-10" src="{% static 'assets/img/up-down.png' %}" alt="up-down">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in all_doctors %}
+                            <tr class="p-10">
+
+                                <td><a href="#">{{ item.owner.first_name}}&nbsp;{{ item.owner.last_name }}</a></td>
+
+                                <td>{{item.phone}}</td>
+                                <td>{{item.availablity_from}}&nbsp;{{ item.availablity_to }}</td>
+                                <td>{{item.specialization}}</td>
+
+                                <td class="p-10">
+                                    <span class="d-center gap-3">
+                                        <a href="{% url 'admin_doctor_detail_view' item.id %}"><i class="act-icon tpc-2 fa-regular fa-eye icon-bg icon-bgc-2"></i> </a>
+                                        <a href="#"> <i
+                                                class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg icon-bgc-2"></i></a>
+                                        <i class="delete-icon tpc-2 fa-solid fa-trash-can icon-bg icon-bgc-2"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                    <!-- table end -->
+                    <!-- pagination start  -->
+                    <div class="list-footer d-between bgnc-10 br-brl-sm px-30 py-3">
+                        <span class="para-1b fs-base d-block">Showing 1 to 10 of 14 entries</span>
+                        <ul class="pagination-item">
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)" aria-label="Previous">
+                                    <span aria-hidden="true"><i class="fa-solid fa-angles-left"></i></span>
+                                </a>
+                            </li>
+                            <li class="page-item "><a class="page-link" href="javascript:void(0)">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="javascript:void(0)">2</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)" aria-label="Next">
+                                    <span aria-hidden="true"><i class="fa-solid fa-angles-right"></i></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- pagination end  -->
+                </div>
+
+            </div>
+            <footer>
+                <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </main>
+
+{% endblock %}

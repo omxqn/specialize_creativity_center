@@ -1,0 +1,112 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Admin Dashboard
+{% endblock %}
+{% block content %}
+
+
+
+
+        <!-- content section start   -->
+        <div class="main-content">
+            <!-- main content start -->
+            <div>
+                <div class="page-title">
+                    <h3>Patient Detail</h3>
+
+                </div>
+
+           <div class="row g-4 align-items-center">
+                    <div class="col-lg-2 col-md-6 mx-auto">
+
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="px-lg-30 px-3 py-20 br-sm bgnc-10 border-1">
+                            <div class="d-between mb-20">
+                                <span class="heading-four text-center tpc-2 mb-20">Patient Info</span>
+                                <a class="btn-3" href="#">Edit</a>
+                            </div>
+                            <div class="bt-2 pt-20 doc-info-body">
+
+                                <div class="doc-info-item">
+                                    <ul class="d-grid gap-10">
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Name</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base">{{ patient_info.name}}</span>
+                                        </li>
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Address</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base">{{patient_info.address}} </span>
+                                        </li>
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Email</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base">{{ patient_info.email}}</span>
+                                        </li>
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Phone</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base"> {{patient_info.phone}} </span>
+                                        </li>
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Gender</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base"> {{ patient_info.gender }} </span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="doc-info-item">
+                                    <ul class="d-grid gap-10">
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Date of Birth </span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base">{{ patient_info.DOB}}</span>
+                                        </li>
+
+
+
+
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-lg-2 col-md-6 mx-auto">
+
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </main>
+
+{% endblock %}

@@ -1,0 +1,135 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Admin Dashboard
+{% endblock %}
+{% block content %}
+
+
+
+
+    <!-- content section start   -->
+    <div class="main-content">
+        <!-- main content start -->
+        <div>
+            <div class="page-title justify-content-end">
+                <!-- <h3>Edit Patient</h3> -->
+                <ul class="d-flex align-items-center gap-20">
+                    <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                    <li class="bc-item"><a class="para-1b" href="#">Add Appointment</a></li>
+
+                </ul>
+            </div>
+            {% include '_messages.html' %}
+
+            <div class="bgnc-10 br-sm p-sm-30 p-10">
+                <span class="heading-five mb-sm-30 mb-3 tpc-2">Schedule Appointment</span>
+                <form action="" method="post">
+                {% csrf_token %}
+
+                    <div class="row gy-20 gx-4">
+                        <div class="col-lg-6">
+                            <label class="mb-10 fw-semibold">Select Doctor <span class="tsc-1">*</span></label>
+                            <div class="pres-input">
+                                <select name="select-doctor" class="wide Select" required>
+                                    <option value="Select">Select</option>
+                                    {% for item in all_doctors %}
+                                        <option value="{{ item.owner.id }}">{{ item.owner.first_name }}&nbsp;{{ item.owner.last_name }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="mb-10 fw-semibold">Select Patient <span class="tsc-1">*</span></label>
+                            <div class="pres-input">
+                                <select name="select-patient" class="wide Select" required>
+                                    <option value="Select">Select</option>
+                                    {% for item in all_patient %}
+                                        <option value="{{ item.id }}">{{ item.name }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <label class="mb-10 fw-semibold">Appointment Date <span class="tsc-1">*</span></label>
+                            <div class="form-input-box">
+                                <i class="fa-solid fa-calendar form-icon"></i><input type="datetime-local"
+                                                                                     placeholder="Date"
+                                                                                     name="appointment_on" required>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                            <div class="mb-20">
+                                <label class="mb-10 fw-semibold">Deposit Paid <span class="tsc-1">*</span>
+                                </label>
+                                <div class="form-input-box">
+                                    <i class="fa-solid fa-money-bill form-icon"></i>
+                                    <input type="number" placeholder="Amount" name="deposit_paid" required>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-6">
+
+                            <div class="mb-20">
+                                <label class="mb-10 fw-semibold">Fee Paid <span class="tsc-1">*</span></label>
+                                <div class="form-input-box">
+                                    <i class="fa-solid fa-dollar form-icon"></i>
+                                    <input type="number" name="fee_paid" placeholder="Fee paid" required>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="mb-sm-40 mb-3">
+                        <label class="mb-10 fw-semibold">Remarks</label>
+                        <textarea class="form-input-textbox" rows="4" name="remarks" placeholder="Note"
+                                  required></textarea>
+                    </div>
+
+
+                    <div class="d-flex align-items-center gap-sm-4 gap-3">
+                        <button type="submit" class="btn-2 para-1b fw-bold">Submit</button>
+                        <button class="btn-1 para-1b fw-bold">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <footer>
+            <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span
+                            class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+            </div>
+        </footer>
+
+
+    </div>
+
+    </main>
+
+
+
+
+
+
+{% endblock %}

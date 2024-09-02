@@ -1,0 +1,64 @@
+{% load static %}
+<title>{% block title %} Accounts {% endblock %}</title>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8"/>
+    <title>Specialized Creativity Center</title>
+    <link rel="shortcut icon" href="{% static 'assets/img/logo.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'assets/css/customizeBootstrap.css' %}">
+    <!-- css stylesheet -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet"/>
+
+
+
+</head>
+<body class="body-bg">
+
+
+{% if user_profile.role == 'admin_staff_member' %}
+    {% include 'admin_site/dashboard_navbar.html' %}
+{% elif user_profile.role == 'Doctor' %}
+    {% include 'doctor_navbar.html' %}
+{% elif user_profile.role == 'Pharamacy' or user_profile.role == 'Lab' %}
+    {% include 'pharamacy_navbar.html' %}
+{% elif user_profile.role == 'nurse' %}
+    {% include 'nurse_navbar.html' %}
+{% endif %}
+
+
+{% block content %}
+
+{% endblock %}
+
+{% include 'admin_site/dashboard_footer.html' %}
+
+
+<!-- jquery -->
+<script src="{% static 'assets/js/plugin/jquery-3.7.0.min.js' %}"></script>
+<!-- bootstrap js  -->
+<script src="{% static 'assets/js/plugin/bootstrap.min.js' %}"></script>
+<!-- nice select  -->
+<script src="{% static 'assets/js/plugin/jquery.nice-select.min.js' %}"></script>
+<!-- chart js  -->
+<script src="{% static 'assets/js/plugin/cdn.jsdelivr.net_npm_chart.js' %}"></script>
+<!-- plugin customize js  -->
+<script src="{% static 'assets/js/pluginCustomization.js' %}"></script>
+
+
+<!-- main js  -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.Select').select2();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialized Creativity Center</title>
+
+    <link rel="shortcut icon" href="{% static 'website/assets/img/SCC_logo (2).png' %}" type="image/x-icon">
+    <!-- bootstrap stylesheet -->
+    <link rel="stylesheet" href="{% static 'website/assets/css/customizeBootstrap.css' %}">
+    <!-- css stylesheet -->
+    <link rel="stylesheet" href="{% static 'website/assets/css/style.css' %}">
+</head>
+
+
+<body>
+
+
+
+   {% include 'website_navbar.html' %}
+
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+
+{% endblock %}
+
+
+      {% include 'website_footer.html' %}
+
+    <!-- jquery  -->
+    <script src="{% static 'website/assets/js/plugin/jquery-3.7.0.min.js' %}"></script>
+    <!-- bootstrap  -->
+    <script src="{% static 'website/assets/js/plugin/bootstrap.min.js' %}"></script>
+    <!-- swiper js  -->
+    <script src="{% static 'website/assets/js/plugin/swiper-bundle.min.js' %}"></script>
+    <!-- wow js  -->
+    <script src="{% static 'website/assets/js/plugin/wow.min.js' %}"></script>
+    <!-- magnific popup -->
+    <script src="{% static 'website/assets/js/plugin/magnific-popup.js_1.1.0_jquery.js' %}"></script>
+    <!-- viewport  -->
+    <script src="{% static 'website/assets/js/plugin/viewport.js' %}"></script>
+    <!-- odometer  -->
+    <script src="{% static 'website/assets/js/plugin/odometer.js_0.4.7.min.js' %}"></script>
+    <!-- plugin customization  -->
+    <script src="{% static 'website/assets/js/pluginCustomization.js' %}"></script>
+    <!-- main js  -->
+    <script src="{% static 'website/assets/js/main.js' %}"></script>
+  </body>
+</html>

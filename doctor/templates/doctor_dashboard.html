@@ -1,0 +1,98 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Admin Dashboard
+{% endblock %}
+{% block content %}
+
+
+
+
+        <!-- content section start   -->
+        <div class="main-content">
+            <!-- main content start -->
+            <div>
+                <div class="page-title">
+                    <h3>Doctor Dashboard</h3>
+                    <ul class="d-flex align-items-center gap-20">
+                        <li class="bc-item">Dashboard</li>
+                    </ul>
+                </div>
+
+                <div class="row g-xxl-4 g-lg-3 gy-3 mb-4">
+
+                    <div class="col-xxl-3 col-lg-4 col-md-6">
+                        <div class="card-box">
+                            <div>
+                                <h5 class="fw-normal mb-1">Patient</h5>
+                                <span class="para-bq d-block">1</span>
+                            </div>
+                            <div class="card-box-icon bgpc-1">
+                                <img src="{% static 'assets/img/icon/patient.png' %}" alt="patient">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-lg-4 col-md-6">
+                        <div class="card-box">
+                            <div>
+                                <h5 class="fw-normal mb-1">Patient Appointment</h5>
+                                <span class="para-bq d-block">3</span>
+                            </div>
+                            <div class="card-box-icon bgc-4">
+                                <img src="{% static 'assets/img/icon/appointment.png' %}" alt="appointment">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-3 col-lg-4 col-md-6">
+                        <div class="card-box">
+                            <div>
+                                <h5 class="fw-normal mb-1">Patient Case Studies</h5>
+                                <span class="para-bq d-block">0</span>
+                            </div>
+                            <div class="card-box-icon bgc-4">
+                                <img src="{% static 'assets/img/icon/paper.png' %}" alt="paper">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xxl-3 col-lg-4 col-md-6">
+                        <div class="card-box">
+                            <div>
+                                <h5 class="fw-normal mb-1">Prescription</h5>
+                                <span class="para-bq d-block">0</span>
+                            </div>
+                            <div class="card-box-icon bgc-3">
+                                <img src="{% static 'assets/img/icon/pills.png' %}" alt="pills">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row g-xxl-4 g-lg-3 gy-3">
+                    <div class="col-xxl-12 col-lg-7">
+                        <div class="bgnc-10 br-sm monthly-user">
+                            <span class="d-block para-bq text-center">Monthly Patient attended</span>
+                            <!-- Monthly Registered Users chart  -->
+                            <canvas id="monthlyUserChart"></canvas>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <footer>
+                <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </main>
+
+{% endblock %}

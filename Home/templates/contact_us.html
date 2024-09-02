@@ -1,0 +1,129 @@
+{% extends 'website_base.html' %}
+
+{% load static %}
+{% block title %}
+    Contact Us
+{% endblock %}
+{% block content %}
+
+
+    <!-- hero section start  -->
+    <section class="hero-4 sec-pad bgc-2">
+        <div class="container position-relative">
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-8 wow fadeInDown" data-wow-duration="2s">
+                    <h2 class="tnc-10 text-center mb-20">Contact Our Team</h2>
+                    <p class="tnc-10 text-center">
+                        Whatever it is your condition , Specialized Creativity Center Bioelectronic therapy can make all the difference.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- hero section end  -->
+
+    <!-- contact section start  -->
+    <section class="contact sec-pad">
+        <div class="container">
+            <div class="row justify-content-between gy-4">
+                <div class="col-lg-4 wow fadeInUp">
+                    <div class="d-grid gap-20">
+                        <div class="py-20 px-sm-30 px-3 bgc-6 br-sm">
+                            <h5 class="mb-20">Phone :</h5>
+                            <div class="d-flex align-items-center gap-20">
+                                <i class="fa-solid fa-phone-volume contact-icon"></i>
+                                <a href="tel:+4401144372799">+ 44 (0) 114 437 2799</a>
+                            </div>
+                        </div>
+                        <div class="py-20 px-sm-30 px-3 bgc-7 br-sm">
+                            <h5 class="mb-20">Email :</h5>
+                            <div class="d-flex align-items-center gap-20">
+                                <i class="fa-regular fa-envelope contact-icon"></i>
+                                <div class="d-grid">
+                                    <a href="mailto:info@healtheasehealth.co.uk">info@healtheasehealth.co.uk</a>
+                                    <a href="mailto:sales@healtheasehealth.co.uk">sales@healtheasehealth.co.uk</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="py-20 px-sm-30 px-3 bgc-8 br-sm">
+                            <h5 class="mb-20">Address :</h5>
+                            <div class="d-flex align-items-center gap-20">
+                                <i class="fa-solid fa-location-dot contact-icon"></i>
+                                <span>Kollider, Castle House, Angel Street, Sheffield, S3 8LN, United Kingdom</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 wow fadeInDown">
+                    <div class="contact-form">
+                        <h4 class="mb-20">Call or visit us today.</h4>
+                        <form action="#">
+                            <div class="mb-30">
+                                <label class="mb-20 para-1b fw-semibold">Name</label>
+                                <div class="d-sm-flex d-grid align-items-center gap-20">
+                                    <input class="form-control px-30 py-3" type="text" placeholder="First name">
+                                    <input class="form-control px-30 py-3" type="text" placeholder="Last name">
+                                </div>
+                            </div>
+                            <div class="mb-30">
+                                <label class="mb-20 para-1b fw-semibold">Email</label>
+                                <input class="form-control px-30 py-3" type="email" placeholder="Email">
+                            </div>
+                            <div class="mb-30">
+                                <label class="mb-20 para-1b fw-semibold">Subject</label>
+                                <input class="form-control px-30 py-3" type="text" placeholder="Subject">
+                            </div>
+                            <div class="mb-30">
+                                <label class="mb-20 para-1b fw-semibold">Message</label>
+                                <textarea class="form-control" rows="4" placeholder="Message"></textarea>
+                            </div>
+                            <button class="btn-1 border-0 fw-bold">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact section end  -->
+
+    <!-- map section start  -->
+    <section class="map-section">
+        <div class="container-fluid">
+            <div class="map-body">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25034.501165633483!2d90.40455974390662!3d23.803192149008613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1691312383643!5m2!1sen!2sbd"
+                    width="1920" height="700" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+    <!-- map section end  -->
+
+    <!-- call to action start -->
+    <section class="call-to-act">
+        <div class="container position-relative">
+            <div class="row align-items-center justify-content-between gy-4 gy-lg-0">
+                <div class="col-lg-5 order-last order-lg-first wow fadeInUp">
+                    <div class="CTA-banner">
+                        <img src="{% static 'website/assets/img/banner/cat-banner.png' %}" alt="banner">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInDown">
+                    <h2 class="mb-20">
+                        Subscribe to our newsletter.
+                    </h2>
+                    <span class="para-1b d-block mb-sm-40 mb-20">Sign up with your email address to receive news and
+                        updates.</span>
+                    <form action="#">
+                        <div class="cat-form">
+                            <input type="email" placeholder="Enter your gmail">
+                            <button class="para-1b fw-bold btn-lg-1 border-0 ">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- call to action end -->
+
+{% endblock %}

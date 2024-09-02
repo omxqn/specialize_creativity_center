@@ -1,0 +1,112 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Admin Dashboard
+{% endblock %}
+{% block content %}
+
+
+
+
+        <!-- content section start   -->
+        <div class="main-content">
+            <!-- main content start -->
+            <div>
+                <div class="page-title">
+                    <h3>Doctor Detail</h3>
+
+                </div>
+
+          <div class="row g-4 align-items-center">
+                    <div class="col-lg-4 col-md-6 mx-auto">
+                        <div class="p-30 br-sm bgnc-10 bxs-1 text-center">
+                            <div class="thum-pic mb-sm-30 mb-20">
+                                {% if doctor_info.picture %}
+                                <img class="w-100 rounded-circle" src="{{ doctor_info.picture.url }}" alt="patient">
+                                {% else %}
+                                 <img class="w-100 rounded-circle" src="{% static 'assets/img/mr-patient.png' %}" alt="patient">
+                                {% endif %}
+
+                            </div>
+                            <span class="heading-four mb-10">{{ doctor_info.owner.first_name}}&nbsp;{{ doctor_info.owner.last_name}}</span>
+                            <span class="para-1b d-block mb-20">{{ doctor_info.specialization }}</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="px-lg-30 px-3 py-20 br-sm bgnc-10 border-1">
+                            <div class="d-between mb-20">
+                                <span class="heading-four text-center tpc-2 mb-20">Doctor Info</span>
+                                <a class="btn-3" href="#">Edit</a>
+                            </div>
+                            <div class="bt-2 pt-20 doc-info-body">
+
+                                <div class="doc-info-item">
+                                    <ul class="d-grid gap-10">
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Name</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base">{{ doctor_info.owner.first_name}}&nbsp;{{ doctor_info.owner.last_name}}</span>
+                                        </li>
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Address</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base">Westheimer Rd. Santa Ana, Illinois 85486 </span>
+                                        </li>
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Email</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base">{{ doctor_info.owner.email}}</span>
+                                        </li>
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Phone</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base"> {{doctor_info.phone}} </span>
+                                        </li>
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Gender</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base"> {{ doctor_info.gender}}</span>
+                                        </li>
+                                        <li class="d-sm-flex">
+                                            <span class="d-flex">
+                                                <span class="fw-bold doc-info-title">Availabilty</span>
+                                                <span class="fw-bold d-inline-block me-10"> : </span>
+                                            </span>
+                                            <span class="fs-base"> From:{{ doctor_info.availablity_from }}</span>
+                                            <span class="fs-base"> To:{{ doctor_info.availablity_to }}</span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </main>
+
+{% endblock %}

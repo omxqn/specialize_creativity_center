@@ -1,0 +1,65 @@
+{% extends 'authentication_base.html' %}
+{% load static %}
+{% block title %}
+    Login
+{% endblock %}
+{% block content %}
+
+    <body>
+    <div class="login-body">
+        <div class="container position-relative">
+            <div class="login-img-1">
+                <img class="w-100 rounded-circle" src="{% static 'assets/img/log/log-1.png' %}" alt="animation img">
+            </div>
+            <div class="login-img-2">
+                <img class="w-100 rounded-circle" src="{% static 'assets/img/log/log-2.png' %}" alt="animation img">
+            </div>
+            <div class="login-img-3">
+                <img class="w-100 rounded-pill" src="{% static 'assets/img/log/log-3.png' %}" alt="animation img">
+            </div>
+            <div class="login-img-4">
+                <img class="w-100 rounded-circle" src="{% static 'assets/img/log/log-4.png' %}" alt="animation img">
+            </div>
+
+            <div class="login-img-5">
+                <img class="w-100 rounded-pill" src="{% static 'assets/img/log/log-5.png' %}" alt="animation img">
+            </div>
+
+            <div class="d-center h-100vh">
+                <div class="login-form">
+                    <h5 class="tpc-2 mb-sm-30 mb-3 text-center"> Specialized Creativity  <span class="fw-normal tsc-1"> Center </span></h5>
+
+                    {% include '_messages.html' %}
+                    <form action="{% url 'Login' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-20">
+                            <label class="mb-3 d-block para-1b fw-medium">Email</label>
+                            <input type="email" class="login-input" name="username" placeholder="Your email..." required>
+                        </div>
+
+                        <div>
+                            <label class="mb-3 d-block para-1b fw-medium">Password</label>
+                            <input type="password" name="password" class="login-input" placeholder="Your password..." required>
+                        </div>
+                       <div class="my-sm-30 my-3 d-between">
+                            <div class="d-flex align-items-center gap-10">
+                                <input type="checkbox" id="checkbox" class="check-box">
+                                <label for="checkbox">Remember me</label>
+                            </div>
+                            <a href="{% url 'forget_password' %}" class="para-1b fs-base tsc-1">Forgot password?</a>
+                        </div>
+
+
+
+                        <button class="btn-1 heading-six w-100 mb-sm-30 mb-3 bgpc-2 tnc-10" type="submit">Login</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    </body>
+
+{% endblock %}
