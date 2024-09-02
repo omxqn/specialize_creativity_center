@@ -1,0 +1,111 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Medicine stock
+{% endblock %}
+{% block content %}
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.css">
+
+
+    <!-- content section start   -->
+    <div class="main-content">
+        <!-- main content start -->
+        <div>
+            <div class="page-title justify-content-end">
+                <!-- <h3>Device</h3> -->
+                <ul class="d-flex align-items-center gap-20">
+                    <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                    <li class="bc-item">Stock</li>
+                </ul>
+            </div>
+
+            <div class="list-body" id="table_list2">
+                <div class="list-title d-between bgnc-10 br-trl-sm px-30 py-3">
+                    <div class="search-box ms-2">
+                        <input type="text" class="form-control search" placeholder="Search..">
+                        <i class="ri-search-line search-icon"></i>
+                    </div>
+
+                </div>
+
+                <br>
+                 <a href="{% url 'add_medicine' %}" class="btn-2" id="showFilter"><i class="fa-solid fa-plus"></i>
+                    Add Stock
+                </a>
+                <br>
+
+                   <table class="list-table">
+                    <thead>
+                    <tr>
+                        <th class="sort" data-sort="name">
+                            Prodcut Name
+                        </th>
+                         <th class="sort" data-sort="category">Category
+                        </th>
+                        <th class="sort-devices">Stock
+                        </th>
+
+                        <th class="sort" data-sort="price">Price
+                        </th>
+
+
+                        <th >Actions
+                        </th>
+                    </tr>
+                    </thead>
+                          <tbody class="list">
+                    {% for item in all_products %}
+                    <tr>
+                        <td class="name">{{ item.name}}</td>
+                        <td class="category">{{ item.category.name}}</td>
+                        <td>{{ item.stock}}</td>
+                        <td class="price">{{ item.price}}</td>
+
+                        <td >
+
+                            <a href="{% url 'edit_medicine' item.id %}"> <i class="edit-icon tpc-2 fa-solid fa-pen-to-square icon-bg"></i></a>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <footer>
+            <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span
+                            class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+            </div>
+        </footer>
+
+
+    </div>
+
+    </main>
+
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize List.js with both search and pagination options
+            var options = {
+                valueNames: ['name', 'category', 'price'],
+
+            };
+            var cryptoList = new List('table_list2', options);
+
+            // Optionally, add a search box event listener
+            document.querySelector('.search').addEventListener('input', function (event) {
+                cryptoList.search(event.target.value);
+            });
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,260 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Pharamacy Dashboard
+{% endblock %}
+{% block content %}
+
+
+
+
+        <!-- content section start   -->
+        <div class="main-content">
+            <!-- main content start -->
+             <div>
+                <div class="page-title justify-content-end">
+                    <!-- <h3>Device</h3> -->
+                    <ul class="d-flex align-items-center gap-20">
+                        <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                        <li class="bc-item">Device</li>
+                    </ul>
+                </div>
+
+                <div class="list-body">
+                    <div class="list-title d-between bgnc-10 br-trl-sm px-30 py-3">
+                        <span class="heading-five tpc-2">Device</span>
+                        <button class="btn-2 para-1b" id="showFilter"> <i
+                                class="fa-solid fa-sliders"></i>Filter</button>
+                    </div>
+                    <!-- pop up filter box start -->
+                    <div class="filter-list bgnc-10 ">
+                        <div class="px-30 pt-3 pb-30">
+                            <form action="#" class="d-between gap-30 mb-30">
+                                <div class="w-100">
+                                    <label class="para-1b d-block tnc-1 mb-10">Name</label>
+                                    <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="text"
+                                        placeholder="Your name">
+                                </div>
+                                <div class="w-100">
+                                    <label class="para-1b d-block tnc-1 mb-10">Email</label>
+                                    <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="email"
+                                        placeholder="Your email">
+                                </div>
+                                <div class="w-100">
+                                    <label class="para-1b d-block tnc-1 mb-10">Phone</label>
+                                    <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="number"
+                                        placeholder="Your number">
+                                </div>
+                            </form>
+                            <button class="btn-2">Submit</button>
+                        </div>
+                    </div>
+                    <!-- pop up filter box end -->
+
+                    <table class="list-table" id="itemTable">
+                        <thead>
+                            <tr>
+                                <th class="sort-devices"><img class="me-10" src="{% static 'assets/img/up-down.png' %}" alt="up-down">
+                                    Device Name
+                                </th>
+                                <th class="sort-devices"><img class="me-10" src="{% static 'assets/img/up-down.png' %}"
+                                        alt="up-down">Warranty date
+                                </th>
+                                <th class="sort-devices"><img class="me-10" src="{% static 'assets/img/up-down.png' %}"
+                                        alt="up-down">Purchase date
+                                </th>
+                                <th><img class="me-10" src="{% static 'assets/img/up-down.png' %}" alt="up-down">Device Control</th>
+                                <th class="text-center"><img class="me-10" src="{% static 'assets/img/up-down.png' %}"
+                                        alt="up-down">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Device 1 </td>
+                                <td>8/16/22</td>
+                                <td>10 Dec 2019</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Device 2</td>
+                                <td>8/16/25</td>
+                                <td>10 Dec 2022</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Device 3</td>
+                                <td>8/16/24</td>
+                                <td>10 Dec 2020</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Device 4</td>
+                                <td>8/16/24</td>
+                                <td>10 Dec 2020</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Device 1</td>
+                                <td>8/16/22</td>
+                                <td>10 Dec 2019</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Device 2</td>
+                                <td>8/16/25</td>
+                                <td>10 Dec 2022</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Device 3</td>
+                                <td>8/16/24</td>
+                                <td>10 Dec 2020</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Device 4</td>
+                                <td>8/16/24</td>
+                                <td>10 Dec 2020</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Device 1</td>
+                                <td>8/16/22</td>
+                                <td>10 Dec 2019</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Device 2</td>
+                                <td>8/16/25</td>
+                                <td>10 Dec 2022</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Device 3</td>
+                                <td>8/16/24</td>
+                                <td>10 Dec 2020</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Device 4</td>
+                                <td>8/16/24</td>
+                                <td>10 Dec 2020</td>
+                                <td class="d-center gap-10 justify-content-start">
+                                    <span class="tpc-2">Active</span>
+                                    <label class="switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span class="tsc-1">Deactivate</span>
+                                </td>
+                                <td class="text-center"><i class="act-icon tpc-2 fa-regular fa-eye"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+            <footer>
+                <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </main>
+
+{% endblock %}

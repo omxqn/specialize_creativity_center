@@ -1,0 +1,142 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Doctor Patients
+{% endblock %}
+{% block content %}
+
+
+
+
+    <!-- content section start   -->
+    <div class="main-content">
+        <!-- main content start -->
+        <div>
+            <div class="page-title justify-content-end">
+                <!-- <h3>Add Prescription</h3> -->
+                <ul class="d-flex align-items-center flex-wrap column-gap-20">
+                    <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                    <li class="bc-item"><a class="para-1b" href="#">Prescription</a>
+                    </li>
+                    <li class="bc-item">Add Prescription</li>
+                </ul>
+            </div>
+
+            <div class="bgnc-10 br-sm p-sm-30 p-10">
+
+
+                <hr>
+
+
+                <button class="btn-1 btn-danger" id="delete_btn"><i
+                        class="fa-solid fa-arrow-circle-right"></i> Prepare Report
+                </button>
+
+                <br>
+
+
+                <table class="list-table" id="itemTable">
+                    <thead>
+
+                    <tr>
+
+                        <th class="sort-input">
+                            Select
+                        </th>
+                        <th class="sort-devices"> Test Name
+                        </th>
+
+
+                        <th class="sort-devices">Ref Range</th>
+                        <th class="sort-devices">Result</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <form name="report_result" id="report_result" action="" method="post">
+                        {% csrf_token %}
+                        {% for item in test_type_info.related_perameters.all %}
+
+                            <tr id="{{ item.id }}">
+                                <th>
+                                    <div class="form-check">
+                                        <input  style="background-color: #006A60" class="form-check-input"
+                                               type="checkbox"
+                                               name="chk_child" value="{{ item.id }}">
+                                    </div>
+                                </th>
+
+                                <td>{{ item.perameter_name }}</td>
+
+                                <td>{{ item.ref_range }}</td>
+
+                                <td><input type="text" name="test_result" id="result"></td>
+
+
+                            </tr>
+                        {% endfor %}
+                    </form>
+
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+        <footer>
+            <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span
+                            class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+            </div>
+        </footer>
+
+
+    </div>
+
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#delete_btn").click(function (e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                var results = {};
+                $("#itemTable tbody tr").each(function () {
+                    var rowId = $(this).attr('id');
+                    var result = $(this).find('input[name="test_result"]').val();
+                    results[rowId] = result;
+                });
+                console.log('Line no 115 is:', results);
+
+                $.ajax({
+                    url: '', // Replace with your actual endpoint URL
+                    type: 'POST',
+                    contentType: 'application/json', // Set the content type to application/json
+                    data: JSON.stringify({
+                        'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+                        'results': results // Assuming 'results' is your data object
+                    }),
+                    success: function (response) {
+                        if (response.message === 'Results processed successfully') {
+                            window.location.href = response.redirect_url;
+                        } else {
+                            // Handle error or other messages
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle any errors
+                        console.log(error);
+                    }
+                });
+
+            });
+        });
+    </script>
+
+
+{% endblock %}

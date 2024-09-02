@@ -1,0 +1,112 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Pharamacy Profile
+{% endblock %}
+{% block content %}
+
+
+
+
+        <!-- content section start   -->
+        <div class="main-content">
+            <!-- main content start -->
+           <div>
+                <div class="page-title justify-content-end">
+                    <!-- <h3>Edit Patient</h3> -->
+                    <ul class="d-flex align-items-center gap-20">
+                        <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                        <li class="bc-item"><a class="para-1b" href="#">Profile</a></li>
+                        <li class="bc-item">Update Profile</li>
+                    </ul>
+                </div>
+               {% include '_messages.html' %}
+
+                <div class="bgnc-10 br-sm p-sm-30 p-10">
+                    <span class="heading-five mb-sm-30 mb-3">Profile</span>
+
+
+
+
+
+                     <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row gy-20">
+                            <div class="col-lg-6">
+
+                                <div class="mb-20">
+                                    <label class="mb-10 fw-semibold">First Name <span class="tsc-1">*</span></label>
+                                    <div class="form-input-box">
+                                        <i class="fa-solid fa-user-nurse form-icon"></i>
+                                        <input type="text" placeholder="Name" name="fname" value="{{ user_profile.owner.first_name }}" required>
+                                    </div>
+                                </div>
+                                <div class="mb-20">
+                                    <label class="mb-10 fw-semibold">Last Name <span class="tsc-1">*</span></label>
+                                    <div class="form-input-box">
+                                        <i class="fa-solid fa-user-nurse form-icon"></i>
+                                        <input type="text" placeholder="Last Name" name="lname" value="{{ user_profile.owner.last_name }}" required>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-20">
+                                    <label class="mb-10 fw-semibold">Email <span class="tsc-1">*</span></label>
+                                    <div class="form-input-box">
+                                        <i class="fa-regular fa-envelope form-icon"></i>
+                                        <input type="email" value="{{ user_profile.owner.email }}" readonly placeholder="Email" name="Email">
+                                    </div>
+                                </div>
+
+                                <div class="mb-20">
+                                    <label class="mb-10 fw-semibold">Phone</label>
+                                    <div class="form-input-box">
+                                        <i class="fa-solid fa-phone-volume form-icon"></i>
+                                        <input type="number" maxlength="11" min="0" value="{{ user_profile.phone }}" name="phone_number" placeholder="Number">
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                               <div class="mb-20">
+                                    <label class="mb-10 fw-semibold">Photo</label>
+                                    <div class="file-input">
+                                        <i class="fa-solid fa-cloud-arrow-up tnc-4 d-block"></i>
+                                        <span class="d-block fs-base tnc-4 mt-1" id="showSelectedFile">Drag and drop a
+                                            file here
+                                            or click</span>
+                                        <input type="file" id="getFile" class="visually-hidden" name="upload" >
+                                    </div>
+                                </div>
+
+                    <div class="d-flex align-items-center gap-sm-4 gap-3 mt-sm-40 mt-4">
+                        <button class="btn-2 para-1b fw-bold" type="submit">Update Profile</button>
+
+                    </div>
+                        </form>
+                </div>
+
+            </div>
+            <footer>
+                <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </main>
+
+{% endblock %}

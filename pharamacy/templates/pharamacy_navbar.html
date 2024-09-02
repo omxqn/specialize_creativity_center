@@ -1,0 +1,140 @@
+{% load static %}
+
+<!-- preloader  -->
+<div id='preloader'>
+    <svg id='loader-1' height='210' width='550' xmlns='http://www.w3.org/2000/svg'
+         xmlns:xlink='http://www.w3.org/1999/xlink'>
+        <path id='loader-2' stroke='#DE6262' fill='none' stroke-width='2' stroke-linejoin='round'
+              d='M0,90L250,90Q257,60 262,87T267,95 270,88 273,92t6,35 7,-60T290,127 297,107s2,-11 10,-10 1,1 8,-10T319,95c6,4 8,-6 10,-17s2,10 9,11h210'/>
+    </svg>
+</div>
+
+<!-- sidebar start -->
+<div class="sidebar">
+    <div class="sidebar-wrapper">
+        <div>
+            <i class="fa-solid fa-x hide-menubar" id="hide-menubar"></i>
+            <div class="p-xl-20 p-10 ">
+
+                <div class="logo pb-20">
+                    <a class="d-flex align-items-center" href="#">
+                        <img src="{% static 'assets/img/logo.png' %}" alt="logo">
+                        <img class="ms-10 show-item lp-2" src="{% static 'assets/img/logo-body.png' %}" alt="logo">
+                    </a>
+                </div>
+                 <div class="py-20 bb-2 bt-1">
+                    <a class="sidebar-user" href="javascript:void(0)">
+                           {% if user_profile.picture %}
+                                <img class="rounded-circle" src="{{user_profile.picture.url}}" alt="admin">
+                        {% else %}
+                        <img class="rounded-circle" src="{% static 'assets/img/admin.png' %}" alt="admin">
+                        {% endif %}
+                        <span class="para-1b show-item ms-10">{{ user_profile.owner.first_name }}&nbsp;{{ user_profile.owner.last_name }} <br>(Role:{{ user_profile.role }})</span>
+                    </a>
+                </div>
+            </div>
+            <div class="side-menu">
+                <ul>
+                    {% if user_profile.role == 'Lab' %}
+                        <li>
+                            <a href="{% url 'pharamacy_patient_prescription' %}">
+                                <i class="fa-solid fa-file-prescription"></i>
+                                <span class="show-item"> Patient Prescriptions</span>
+                            </a>
+                        </li>
+
+                    {% else %}
+
+                    <li>
+                        <a href="{% url 'index' %}">
+                            <i class="fa-solid fa-gauge-high"></i>
+                            <span class="show-item">Dashboard</span>
+                        </a>
+                    </li>
+
+
+
+
+
+
+
+
+                         <li>
+                            <a href="{% url 'pharamacy_medicine_stock' %}">
+                                <i class="fa-solid fa-laptop-medical"></i>
+                                <span class="show-item">Medicines Stock</span>
+                            </a>
+                        </li>
+                        <li>
+                        <a href="{% url 'pharamacy_profile' %}">
+                            <i class="fa-solid fa-user-circle"></i>
+                            <span class="show-item"> Profile Management</span>
+                        </a>
+                    </li>
+
+
+
+                       <li>
+                            <a href="{% url 'pharamacy_patient_prescription' %}">
+                                <i class="fa-solid fa-file-prescription"></i>
+                                <span class="show-item"> Patient Prescriptions</span>
+                            </a>
+                        </li>
+
+
+
+
+
+                    {% endif %}
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+        </div>
+
+        <button class="log-out">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <a href="{% url 'Logout' %}" class="show-item"> Log Out </a>
+        </button>
+    </div>
+</div>
+<!-- sidebar end  -->
+
+
+<main class="content-wrapper">
+
+    <!-- header section start  -->
+    <header>
+        <div class="d-flex align-items-center gap-xl-30 gap-3">
+
+            <button class="toggle-menu btn">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+
+        </div>
+
+        <div class="d-flex align-items-center gap-sm-4 gap-3">
+
+
+
+            <div class="language ">
+                <img class="lang-flag header-item-hide" src="{% static 'assets/img/flag.png' %}" alt="flag">
+
+                <select class="lang">
+                    <option value="en">EN</option>
+                    <option value="bd">BD</option>
+                    <option value="in">IN</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    <!-- header section end  -->
+
+

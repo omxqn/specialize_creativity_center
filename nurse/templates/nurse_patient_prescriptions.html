@@ -1,0 +1,99 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Nurse Dashboard
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.css">
+
+
+
+        <!-- content section start   -->
+        <div class="main-content">
+            <!-- main content start -->
+                   <div>
+                <div class="page-title">
+
+                    <ul class="d-flex align-items-center gap-20">
+                        <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                        <li class="bc-item">Lab Examinations</li>
+                    </ul>
+                </div>
+
+                <div class="list-body" id="table_list3">
+                       <div class="list-title d-between bgnc-10 br-trl-sm px-30 py-3">
+                    <div class="search-box ms-2">
+                        <input type="text" class="form-control search" placeholder="Search..">
+                        <i class="ri-search-line search-icon"></i>
+                    </div>
+
+                </div>
+
+                    </div>
+                    <!-- pop up filter box end -->
+                    <!-- table start -->
+                    <table class="list-table">
+                        <thead>
+                            <tr>
+
+                                <th class="dname"> Doctor Name
+                                </th>
+                                <th class="pname">Patient Name
+                                </th>
+
+                                <th >Date</th>
+                                <th >Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                        {% for item in Prescriptions %}
+                            <tr>
+
+                                <td class="dname">{{ item.doctor.first_name}}&nbsp;{{ item.doctor.last_name}}</td>
+                                <td class="pname">{{ item.patient.name}}</td>
+
+                                <td>{{ item.date}}</td>
+                                <td >
+                                    <a href="{% url 'nurse_prescription_details' item.id %}"><i class="act-icon tpc-2 fa-regular fa-eye"></i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+            <footer>
+                <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+                </div>
+            </footer>
+
+
+
+        </div>
+
+    </main>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize List.js with both search and pagination options
+            var options = {
+                valueNames: ['dname', 'pname'],
+
+            };
+            var cryptoList = new List('table_list3', options);
+
+            // Optionally, add a search box event listener
+            document.querySelector('.search').addEventListener('input', function (event) {
+                cryptoList.search(event.target.value);
+            });
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Add stock
+{% endblock %}
+{% block content %}
+
+
+
+
+    <!-- content section start   -->
+    <div class="main-content">
+        <!-- main content start -->
+        <div>
+            <div class="page-title justify-content-end">
+                <!-- <h3>Add Prescription</h3> -->
+                <ul class="d-flex align-items-center flex-wrap column-gap-20">
+                    <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                    <li class="bc-item"><a class="para-1b" href="#">Store</a>
+                    </li>
+
+                </ul>
+            </div>
+            {% include '_messages.html' %}
+
+            <div class="bgnc-10 br-sm p-sm-30 p-10">
+                <span class="heading-five mb-sm-30 mb-3">Order placed successfully.</span>
+                <p>Here are the order details:</p>
+                <p>Order No# : {{ order_no }}</p>
+                <p>Total : ${{ order_details.total }}</p>
+                <p>Date : {{ order_details.created }}</p>
+
+            </div>
+        </div>
+        <footer>
+            <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span
+                            class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+            </div>
+        </footer>
+
+
+    </div>
+
+    </main>
+
+{% endblock %}

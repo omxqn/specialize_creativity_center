@@ -1,0 +1,128 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Doctor Patients
+{% endblock %}
+{% block content %}
+
+
+
+
+    <!-- content section start   -->
+    <div class="main-content">
+        <!-- main content start -->
+        <div>
+            <div class="page-title justify-content-end">
+                <!-- <h3>Add Prescription</h3> -->
+                <ul class="d-flex align-items-center flex-wrap column-gap-20">
+                    <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                    <li class="bc-item"><a class="para-1b" href="#">Prescription</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bgnc-10 br-sm p-sm-30 p-10">
+                <span class="heading-five mb-sm-30 mb-3 tpc-2">Prescription Details</span>
+            {% include '_messages.html' %}
+
+
+                    <div class="row gy-20 gx-4">
+                        <div class="col-lg-4">
+                            <label class="mb-10 fw-semibold">Doctor</label>
+                            <div class="pres-input">
+                                <input type="text" value="{{ prescription_info.doctor.first_name }}&nbsp;{{ prescription_info.doctor.last_name }}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="mb-10 fw-semibold">Patient</label>
+                            <div class="pres-input">
+                                <input type="text" value="{{ prescription_info.patient.name }}" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <label class="mb-10 fw-semibold">Prescription Date <span class="tsc-1">*</span></label>
+                            <div class="pres-input">
+                                <input type="text" value="{{ prescription_info.date_prescribed }}" required>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <hr>
+            <span class="heading-five mb-sm-30 mb-3 tpc-2">Lab Examination List</span>
+            <hr>
+
+
+
+
+             <table class="list-table" id="itemTable">
+                        <thead>
+
+                            <tr>
+
+
+                                <th class="sort-devices">Test Name
+                                </th>
+
+
+
+
+                                <th class="sort-devices">Fee</th>
+                                <th class="sort-devices">Remarks</th>
+                                <th class="sort-devices">Action</th>
+
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in Lab_examination_list %}
+                            <tr >
+
+
+                                <td>{{ item.lab_test_details.type_name }}</td>
+                                <td>{{ item.lab_test_details.test_fee }}</td>
+
+
+                                <td>{{ item.instruction }}</td>
+                                <td><a href="{% url 'add_test_report' item.id %}"><i class="act-icon tpc-2 fa-regular fa-plus"></i> Add </a></td>
+
+
+
+
+
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <footer>
+            <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span
+                            class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+            </div>
+        </footer>
+
+
+    </div>
+
+    </main>
+
+
+{% endblock %}

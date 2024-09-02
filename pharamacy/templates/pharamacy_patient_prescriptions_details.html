@@ -1,0 +1,159 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Doctor Patients
+{% endblock %}
+{% block content %}
+
+
+
+
+    <!-- content section start   -->
+    <div class="main-content">
+        <!-- main content start -->
+        <div>
+            <div class="page-title justify-content-end">
+                <!-- <h3>Add Prescription</h3> -->
+                <ul class="d-flex align-items-center flex-wrap column-gap-20">
+                    <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                    <li class="bc-item"><a class="para-1b" href="#">Prescription</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bgnc-10 br-sm p-sm-30 p-10">
+                <span class="heading-five mb-sm-30 mb-3 tpc-2">Prescription Details</span>
+                {% include '_messages.html' %}
+
+
+                <div class="row gy-20 gx-4">
+                    <div class="col-lg-4">
+                        <label class="mb-10 fw-semibold">Doctor</label>
+                        <div class="pres-input">
+                            <input type="text"
+                                   value="{{ prescription_info.doctor.first_name }}&nbsp;{{ prescription_info.doctor.last_name }}"
+                                   readonly>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="mb-10 fw-semibold">Patient</label>
+                        <div class="pres-input">
+                            <input type="text" value="{{ prescription_info.patient.name }}" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <label class="mb-10 fw-semibold">Prescription Date <span class="tsc-1">*</span></label>
+                        <div class="pres-input">
+                            <input type="text" value="{{ prescription_info.date_prescribed }}" required>
+                        </div>
+
+                    </div>
+
+                </div>
+                <hr>
+                <span class="heading-five mb-sm-30 mb-3 tpc-2">Medicine List</span>
+                <hr>
+
+
+                <button class="btn-1 btn-danger" id="delete_btn"><i
+                        class="fa-solid fa-arrow-circle-right"></i> Add to cart
+                </button>
+
+                <br>
+                <!-- pop up filter box start -->
+
+
+                <table class="list-table" id="itemTable">
+                    <thead>
+
+                    <tr>
+
+                        <th class="sort-input">
+                            Select
+                        </th>
+                        <th class="sort-devices"> Medicine Name
+                        </th>
+
+
+                        <th class="sort-devices">Formula</th>
+                        <th class="sort-devices">Instructions</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in medicine_list %}
+                        <tr id="{{ item.id }}">
+                            <th>
+                                <div class="form-check">
+                                    <input style="background-color: #006A60" class="form-check-input" type="checkbox"
+                                           name="chk_child" value="{{ item.id }}">
+                                </div>
+                            </th>
+
+                            <td>{{ item.medicine_item.name }}</td>
+
+                            <td>{{ item.medicine_formula }}</td>
+                            <td>{{ item.instruction }}</td>
+
+
+                        </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+        <footer>
+            <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span
+                            class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+            </div>
+        </footer>
+
+
+    </div>
+
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#delete_btn').click(function () {
+                if (confirm("Are you sure you want to proceed to checkout?"))
+                    var id = [];
+                var csrf = $('input[name=csrfmiddlewaretoken] ').val();
+                $(':checkbox:checked').map(function (i) {
+                    id[i] = $(this).val()
+                })
+                if (id.length === 0) {
+                    alert("Please select items to proceed.")
+                } else {
+                    console.log(id)
+
+
+                    $.ajax({
+                        url: '{% url 'add_to_cart' %}',
+                        method: "POST",
+                        headers: {'X-CSRFToken': '{{ csrf_token }}'},
+                        data: {
+                            id
+                        },
+                        success: function (response) {
+                            window.location.href = 'http://127.0.0.1:8000/pharamacy_staff/cart';
+
+
+                        }
+                    })
+                }
+            })
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'admin_site/dashboard_base.html' %}
+
+{% load static %}
+{% block title %}
+    Cart Details
+{% endblock %}
+{% block content %}
+
+
+
+
+    <!-- content section start   -->
+    <div class="main-content">
+        <!-- main content start -->
+        <div>
+            <div class="page-title justify-content-end">
+                <!-- <h3>Add Prescription</h3> -->
+                <ul class="d-flex align-items-center flex-wrap column-gap-20">
+                    <li class="bc-item"><a class="para-1b" href="#">Dashboard</a></li>
+                    <li class="bc-item"><a class="para-1b" href="{% url 'pharamacy_patient_prescription' %}">Prescriptions</a>
+                    </li>
+
+                </ul>
+            </div>
+            {% include '_messages.html' %}
+
+            <div class="bgnc-10 br-sm p-sm-30 p-10">
+
+
+                <table class="list-table" id="itemTable">
+                    <thead>
+                    <tr>
+                        <th class="sort-devices">
+                            Prodcut Name
+                        </th>
+                        <th class="sort-devices">Category
+                        </th>
+                        <th class="sort-devices">Quantity
+                        </th>
+
+                        <th class="sort-devices">Price
+                        </th>
+
+                        <th class="sort-devices">Action
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in cart_items %}
+                        <tr>
+                            <td>{{ item.product.name }}</td>
+                            <td>{{ item.product.category.name }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.product.price }}</td>
+
+                            <td class="text-center">
+                                <a href="{% url 'add_cart' item.product.id %}"><i class="fa-solid fa-plus icon-bg"></i></a>
+                                <a href="{% url 'cart_remove' item.product.id %}"><i
+                                        class="fa-solid fa-trash-can icon-bg"></i></a>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+
+                </table>
+                <br>
+                <div class="list-title d-between bgnc-10 br-trl-sm px-30 py-3">
+
+                    <div class="d-between gap-30">
+                                <button class="btn-1 para-1b">Total:$ {{ stripe_total }}
+                    </button>
+
+                        <button class="btn-2 para-1b" id="showFilter">
+                            Checkout
+                        </button>
+                    </div>
+                </div>
+                <!-- pop up filter box start -->
+                <div class="filter-list bgnc-10 ">
+                    <div class="px-30 pt-3 pb-30">
+                        <form action="" class="d-between gap-30 mb-30" method="post">
+                            {% csrf_token %}
+                            <div class="w-100">
+                                <label class="para-1b d-block tnc-1 mb-10">Name</label>
+                                <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="text"
+                                       name="stripeBillingName"
+                                       placeholder="Your name" required>
+                            </div>
+
+                            <div class="w-100">
+                                <label class="para-1b d-block tnc-1 mb-10">Address</label>
+                                <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="text"
+                                       placeholder="Complete Address" name="stripeBillingAddressLine1" required>
+                            </div>
+                            <div class="w-100">
+                                <label class="para-1b d-block tnc-1 mb-10">City</label>
+                                <input class="form-control px-xxl-30 py-xxl-20 p-lg-20 p-3" type="text"
+                                       placeholder="Your City" name="stripeBillingAddressCity" required>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn-2">Submit</button>
+
+
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <footer>
+            <div class="container-fluid">
+                    <span class="para-1b fs-base text-center text-sm-start d-block ">Copyright © <span
+                            class="currentYear"></span> Specialized Creativity Center. All
+                        rights reserved.</span>
+            </div>
+        </footer>
+
+
+    </div>
+
+    </main>
+
+{% endblock %}
